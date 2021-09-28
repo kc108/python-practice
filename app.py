@@ -389,3 +389,102 @@ import math
 # 7
 # 9
 # We have 5 odd numbers.
+
+# def greet(first_name, last_name):
+#     print(f"Hi {first_name} {last_name}")
+#     print("Welcome aboard")
+
+
+# greet("Kim", "Carpico")
+# greet("John", "Smith")
+
+############################################
+# Better to do this bc we can reuse
+############################################
+# def get_greeting(name):
+#     return f"Hi {name}"
+
+
+# message = get_greeting("Mosh")
+
+############################################
+# KEYWORD ARGUMENTS
+############################################
+# def increment(number, by):
+#     return number + by
+
+
+# print(increment(2, 1)) # 3
+
+# # 'by=1' is a KeyWord Argument, used to make code cleaner
+# print(increment(2, by=1)) # 3
+
+
+############################################
+# How to Make the 'by' Parameter Optional
+############################################
+# def increment(number, by=1):
+#     return number + by
+
+
+# print(increment(2)) 
+
+
+############################################
+# XARGS
+############################################
+# def multiply(x, y):
+#     return x * y
+
+# # If you want to pass > 2 arguments
+# multiply(2, 3, 4, 5)
+
+
+# #
+# def multiply(*numbers):
+#     print(numbers)
+
+
+# multiply(2, 3, 4, 5) # (2, 3, 4, 5)
+
+# Lists: [2, 3, 4, 5] => [] to create Lists
+# (2, 3, 4, 5) => () to create Tuples, collection of objects that CANNOT BE MODIFIED
+
+# def multiply(*numbers):
+#     for number in numbers:
+#         print(number)
+
+
+# multiply(2, 3, 4, 5)
+# 2
+# 3
+# 4
+# 5
+
+
+# Example using XARGS
+# def multiply(*numbers):
+#     total = 1
+#     for number in numbers:
+#         total *= number
+#     return total
+
+
+# print(multiply(2, 3, 4, 5)) # 120
+
+# Example #2 using XARGS
+# def add(*numbers):
+#     total = 0
+#     for number in numbers:
+#         total += number
+#     return total
+
+
+# print(add(2, 3, 4, 5)) # 14
+
+############################################
+# XXARGS => 
+############################################
+# # Printing a string in Reverse
+# for char in reversed("Python"):
+#     print(char)
