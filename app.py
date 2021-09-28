@@ -234,3 +234,114 @@ import math
 ########################################
 # FOR LOOPS
 # ########################################
+# print("Sending a message") many times
+
+# for number in range(3):
+#     print("Attempt", number + 1)
+#Attempt 1 Attempt 2 Attempt 3
+
+# for number in range(1, 4):
+#     print("Attempt", number, (number) * ".")
+# Attempt 1 . 
+# Attempt 2 ..
+# Attempt 3 ...
+
+# Passing 3rd Argument as a Step
+# for number in range(1, 10, 2):
+#     print("Attempt", number, (number) * ".")
+
+# Attempt 1 . 
+# Attempt 3 ...
+# Attempt 5 .....
+# Attempt 7 .......
+# Attempt 9 .........
+
+########################################
+# FOR ELSE
+# ########################################
+# successful = False
+
+# for number in range(3): 
+#     print("Attempt")
+
+#     if successful:
+#         print("Successful")
+#         break
+# else:
+#     print("Attempted 3 times and failed")
+# Attempt
+# Attempt
+# Attempt
+# Attempted 3 times and failed
+
+########################################
+# NESTED LOOPS
+# ########################################
+# runs inner loop 3 times first, then outer loop 5 times.
+# for x in range(5):
+#     for y in range(3):
+#         print(f"({x}, {y})")
+
+# (0, 0)
+# (0, 1)
+# (0, 2)
+# (1, 0)
+# (1, 1)
+# (1, 2)
+# (2, 0)
+# (2, 1)
+# (2, 2)
+# (3, 0)
+# (3, 1)
+# (3, 2)
+# (4, 0)
+# (4, 1)
+# (4, 2)
+
+########################################
+# ITERABLES
+# ########################################
+# print(type(5)) # <class 'int'>
+
+# print(type(range(5))) #<class 'range'>
+
+# # Iterable
+# for x in "Python":
+#     print(x)
+# # P
+# # y
+# # t
+# # h
+# # o
+# # n
+
+# # Another Iterable Type
+# for x in [1, 2, 3, 4]:
+#     print(x)
+
+# 1
+# 2
+# 3
+# 4
+
+########################################
+# WHILE LOOPS
+# ######################################
+number = 100
+while number > 0:
+    print(number)
+    number //= 2
+
+# 100
+# 50
+# 25
+# 12
+# 6
+# 3
+# 1
+
+command = ""
+
+while command.lower() != "quit":
+    command = input(">")
+    print("ECHO", command)
