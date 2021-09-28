@@ -327,10 +327,10 @@ import math
 ########################################
 # WHILE LOOPS
 # ######################################
-number = 100
-while number > 0:
-    print(number)
-    number //= 2
+# number = 100
+# while number > 0:
+#     print(number)
+#     number //= 2
 
 # 100
 # 50
@@ -340,8 +340,52 @@ while number > 0:
 # 3
 # 1
 
-command = ""
+# command = ""
 
-while command.lower() != "quit":
-    command = input(">")
-    print("ECHO", command)
+# while command.lower() != "quit":
+#     command = input(">")
+#     print("ECHO", command)
+
+########################################
+# INFINITE LOOPS
+# ######################################
+# Always want a way to Break Out of them
+# while True:
+#     command = input(">"0)
+#     print("ECHO", command)
+#     if command.lower() == "quit":
+#         break
+
+########################################
+# EXERCISE: check for 1-10 for even
+# ######################################
+# count = 0
+
+# for number in range(1, 10):
+#     if number % 2 == 0:
+#         count += 1
+#         print(number)
+# print(f"We have {count} even numbers.")
+# 2
+# 4
+# 6
+# 8
+# We have 4 even numbers
+
+########################################
+# EXERCISE: check for 1-10 for ODD NUMS
+# ######################################
+# count = 0 
+
+# for num in range(1, 10):
+#     if num % 2 == 1:
+#         count += 1
+#         print(num)
+# print(f"We have {count} odd numbers.")
+
+# 1
+# 3
+# 5
+# 7
+# 9
+# We have 5 odd numbers.
