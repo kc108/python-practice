@@ -246,6 +246,14 @@ import math
 # Attempt 2 ..
 # Attempt 3 ...
 
+# PRACTICE 'FOR LOOP'\
+# 1
+
+
+
+# for item in range(3):
+#     print("Item:", item)
+
 # Passing 3rd Argument as a Step
 # for number in range(1, 10, 2):
 #     print("Attempt", number, (number) * ".")
@@ -259,7 +267,7 @@ import math
 ########################################
 # FOR ELSE
 # ########################################
-# successful = False
+# successful = True
 
 # for number in range(3): 
 #     print("Attempt")
@@ -274,9 +282,28 @@ import math
 # Attempt
 # Attempted 3 times and failed
 
+# FOR/ELSE PRACTICE EXAMPLE
+# stop = True
+
+# for number in range(3):
+#     print("Can I go yet?")
+
+#     if stop:
+#         print("Stop!!!")
+#         break
+
+# else:
+#     print("The light is f&*(ing broken...")
+
 ########################################
 # NESTED LOOPS
 # ########################################
+
+# PRACTICE EXAMPLE - NESTED LOOPS
+# for x in range(7):
+#     for y in range(2):
+#         print(f"({x}, {y})")
+
 # runs inner loop 3 times first, then outer loop 5 times.
 # for x in range(5):
 #     for y in range(3):
@@ -327,6 +354,15 @@ import math
 ########################################
 # WHILE LOOPS
 # ######################################
+# PRACTICE EX:
+# num1 = 200
+# while num1 > 0: 
+#     print(num1)
+#     # num1 = num1 // 2
+#     num1 //= 2
+
+
+
 # number = 100
 # while number > 0:
 #     print(number)
@@ -390,6 +426,8 @@ import math
 # 9
 # We have 5 odd numbers.
 
+
+
 # def greet(first_name, last_name):
 #     print(f"Hi {first_name} {last_name}")
 #     print("Welcome aboard")
@@ -418,6 +456,20 @@ import math
 
 # # 'by=1' is a KeyWord Argument, used to make code cleaner
 # print(increment(2, by=1)) # 3
+
+# # Practice EXAMPLE #1
+# def step_increment(number, by):
+#     return number * by
+
+
+# print(step_increment(2, by=10))
+
+# # Practice EXAMPLE #2
+# def halved(num, by):
+#     return num / by
+
+
+# print(halved(10, by=2))
 
 
 ############################################
@@ -488,3 +540,216 @@ import math
 # # Printing a string in Reverse
 # for char in reversed("Python"):
 #     print(char)
+
+
+# # WRITE prgm to print Prime #'s between 100-200
+# for num in range(1, 100):
+#     if all(num % i != 0 for i in range(2, num)):
+#         print(num)
+
+# Sort a list
+# list = [1, 33, 123, 67, 68]
+# list.sort(reverse = True)
+# print(list)
+
+# # SAME AS ABOVE WITHOUT THE SORT FUNCTION
+# data_list = [1, 33, 123, 67, 68]
+# new_list = []
+
+# while data_list:
+#     minimum = data_list[0]
+#     for x in data_list: 
+#         if x > minimum:
+#             minimum = x
+#     new_list.append(minimum)
+#     data_list.remove(minimum)
+
+
+############################################
+# CREATING A CLASS IN PYTHON
+# ############################################
+# class employee:
+
+#     def __init__(self, first_name, last_name, salary):
+#         self.first_name = first_name
+#         self.last_name = last_name
+#         self.salary = salary
+#         self.email = self.first_name + "." + self.last_name + "@kite.com"
+
+
+#     # Setter Function: Let's us change the Salary of an Employee
+#     def giveRaise(self, salary):
+#         self.salary = salary
+
+
+
+
+############################################
+# DATATYPES: list, tuple, set, dictionary
+# ############################################
+# #LIST: [] square braces
+# list1 = ["Computer", "Printer", "TV", "Camera", 89, 33.3]
+# list1[0] = "PC"
+# print(list1) # ['PC', 'Printer', 'TV', 'Camera', 89, 33.3]
+
+# #TUPLE: () rounded braces, immutable - CANNOT change items in a tuple
+# tuple1 = ("Computer", "Printer", "TV", "Camera", 89, 33.3)
+# list1[0] = "PC"
+# print(tuple1) # ('Computer', 'Printer', 'TV', 'Camera', 89, 33.3)
+
+
+# # SET: uses the 'set' keyword, you CANNOT change its items, but you can ADD new Items
+# set1 = set(["Computer", "Printer", "TV", "Camera", 89, 33.3])
+# print(set1) # {33.3, 'Computer', 'Camera', 'TV', 89, 'Printer'}
+
+# # DICTIONARY: {} curly braces: orders, changeable and does NOT allow duplicates
+# # made up of key/value pairs
+# dict1 = {
+#     "brand": "Ford",
+#     "model": "Mustang",
+#     "year": 1964
+# }
+
+# print(dict1)
+
+
+
+
+ ##############################################
+# XARGS: {}
+###############################################
+# def multiply(x, y):
+#     return x * y
+
+
+# print(multiply(2, 3))
+
+# Change the above to this:
+# def multiply(*numbers):
+#     print(numbers)
+
+
+# multiply(2, 3, 4, 5)
+
+# CHANGE ABOVE TO GET THE FOLLOWING:
+# def multiply1(*numbers):
+#     for number in numbers:
+#         print(number)
+
+
+# multiply1(2, 3, 4, 5)
+# 2
+# 3
+# 4
+# 5
+
+
+# def multiply2(*numbers):
+#     total = 1
+#     for number in numbers:
+#         # total = total * number
+#         total *= number
+#     return total
+
+
+# print(multiply2(2, 3, 4, 5)) # 120
+
+# # # PRACTICE PROBLEM: 
+# def add1(*numbers):
+#     total = 0
+#     for number in numbers:
+#         total += number
+#     return total
+
+
+# print(add1(2, 3, 4, 5)) # 14
+
+
+# ##############################################
+# # XXARGS: {} -> can pass multiple key/value pairs
+# # ############################################
+
+# # dictionary: {}
+
+# def save_user(**user):
+#     print(user)
+
+
+# save_user(id=1, name="John", age=22)
+# {'id': 1, 'name': 'John', 'age': 22} -> this is called a dictionary.
+
+# def save_user(**user):
+#     print(user["name"]) #John
+
+
+# save_user(id=1, name="John", age=22)
+
+
+####################################################
+# SCOPE
+####################################################
+# message = in this Example is only accessible within this function
+# def greet():
+#     message = "a"
+
+
+# def send_email(name):
+#     message = "b"
+
+
+# greet("Mosh")
+
+
+## OPPOSED TO GLOBAL SCOPE - best to NOT use GLOBAL VARIABLES
+# message = "a"
+
+# def greet(name):
+#     message = "b"
+
+
+# greet("Mosh")
+# print(message) # a
+
+# # *** AVOID THIS *** bc it is possible to have multiple functions that rely on this function
+# message = "a"
+
+# def greet(name):
+#     global message
+#     message = "b"
+
+
+# greet("Mosh")
+# print(message)
+
+##################################################
+
+
+
+##################################################
+# DEBUGGING
+##################################################
+# def multiply(*numbers):
+#     total = 1
+#     for number in numbers:
+#         total *= number
+#         return total
+
+
+# print("Start")
+# print(multiply(1, 2, 3))
+
+##################################################
+# FIZZ BUZZ
+##################################################
+def fizz_buzz(input):
+    if input % 3 == 0:
+        return "Fizz"
+    if input % 5 == 0:
+        return "Buzz"
+    if (input % 3 == 0) and (input % 5 == 0):
+        return "FizzBuzz"
+    return input
+
+
+print(fizz_buzz(5))
+
