@@ -1237,9 +1237,96 @@ if 10 in point5:
 
 # TO USE ARRAYS MUST IMPORT FROM MODULE LIKE SO:
 # from array import array
-# Google Python3 typecode, this shows the 'one character' to use for the type of list being handled
-numbers = array("i", [1, 2, 3])
-numbers.append(4)
-print(numbers) # array('i', [1, 2, 3, 4])
-# Also have .pop(), insert() and remove() similar to LISTS
-# numbers[0] # must be the same type of object
+# # Google Python3 typecode, this shows the 'one character' to use for the type of list being handled
+# numbers = array("i", [1, 2, 3])
+# numbers.append(4)
+# print(numbers) # array('i', [1, 2, 3, 4])
+# # Also have .pop(), insert() and remove() similar to LISTS
+# # numbers[0] # must be the same type of object
+
+
+
+#######################################################
+# SETS: collection with NO DUPLICATES
+# *** SETS SHINE IN COMPLICATED MATH OPERATIONS ***
+#######################################################
+# Remove DUPLICATES BY CONVERTING LIST TO A SET
+# numbers = [1, 1, 2, 3, 4]
+# first = set(numbers)
+# second = {1, 5}
+# second.add(5)
+# second.remove(5)
+# len(second)
+# print(uniques) # {1, 2, 3, 4}
+
+# print(first | second) # {1, 2, 3, 4, 5} -> returns COMBINED SETS
+
+# # Can also get the intersection of 2 sets
+# print(first & second) # {1} -> returns all values in BOTH SETS
+
+# print(first - second) # returns the ADD set of NUMBERS NOT in the 1st SET
+# print(first ^ second) # returns items either in the 1st or 2nd set BUT NOT both
+
+# print(first[0]) # ERROR **** IF YOU NEED TO ACCESS ITEMS BY INDEX YOU NEED TO USE A LIST 
+
+# # can check if something exists in a set
+# if 1 in first: 
+#     print("yes")
+
+
+#######################################################
+# DICTIONARIES: Used to map key'value pairs 
+#######################################################
+# Example: Phone Book (name -> contact)
+point6 = {"x": 1, "y": 2}
+# can use above or this syntax, *prefer the below
+point6 = dict(x=1, y=2)
+print(point6["x"]) # 1
+# CANNOT USE THIS SYNTAX: point6[0] with DICTIONARIES
+
+
+point6["x"] = 10
+point6["z"] = 20
+# print(point6) # {'x': 10, 'y': 2, 'z': 20}
+
+# If an Invalid key is used you will get an Error
+# print(point6["a"])
+
+# *** WORK AROUND TO THIS ERROR ***
+if "a" in point6:
+    print(point6["a"])
+# Can pass a 'default' value as a second argument
+print(point6.get("a", 0)) # None
+
+# OTHER SOLUTION:
+print(point6.get("a")) # returns NONE -> means key does NOT exist
+
+del point6["x"]
+print(point6)
+
+# LOOPING OVER DICTIONARIES
+for x in point6:
+    print(x)
+
+# y
+# z
+
+# *** BETTER PRACTICE to rename KEY instead of 'x'
+for key in point6:
+    print(key, point6[key]) 
+# y 2
+# z 20
+
+#
+for x in point6.items():
+    print(key, point6[key]) 
+# EACH ITERATION GET A TUPLE
+# ('y', 2)
+# ('z', 20)
+
+# BETTER PRACTICE -> same result
+for key, value in point6.items():
+    print(key, value)
+
+# ('y', 2)
+# ('z', 20)
