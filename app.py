@@ -1059,3 +1059,95 @@ letters = ["a", "b", "c"]
 # # ** ALTERNATIVELY, YOU CAN CONVERT THIS INTO A LIST OBJECT LIKE SO:
 # prices = list(map(lambda item: item[1], items))
 # print(prices) # [10, 9, 12]
+
+################################################
+# LAMBDA & FILTER FNCT
+################################################
+# items = [
+#     ("Product", 10),
+#     ("Product", 9),
+#     ("Product", 12),
+# ]
+
+# x = filter(lambda item: item[1] >= 10, items)
+# print(x) # <filter object at 0x7f8d27131f70>
+
+# ** THEN DO THE FOLLOWING:
+# filtered = list(filter(lambda item: item[1] >= 10, items))
+# print(filtered) # [('Product', 10), ('Product', 12)]
+
+
+################################################
+# LIST COMPREHENSIONS
+################################################
+# map() & filter() above are used, but can also use the following. This is unique to Python
+# [] define the list, inside write a Comprehension Expression
+# items1 = [
+#     ("Product", 10),
+#     ("Product", 9),
+#     ("Product", 12),
+# ]
+
+# *** FORMULA FOR LIST-COMPREHENSIONS *** PREFERRED WAY IN PYTHON TO MAP OR FILTER *** UNIQUE TO PYTHON ***
+# # [expression for item in items]
+# [item[1] for item in items]
+
+# # same as the following, but the above is cleaner
+# prices = list(map(lambda item: item[1, items]))
+
+
+#######################################################
+#######################################################
+# RE-WRITING THE FILTER ABOVE WRITTEN AGAIN BELOW:
+# filtered = list(filter(lambda item: item[1] >= 10, items))
+
+# # USING A LIST-COMPREHENSION same as above
+# filtered = [item for item in items if item[1] >= 10]
+
+
+#######################################################
+# ZIP FUNCTION
+#######################################################
+list1 = [1, 2, 3]
+list2 = [10, 20, 30]
+
+# LIST []
+# tuple ()
+[(1, 10), (2, 20), (3, 30)]
+
+print(zip(list1, list2)) # <zip object at 0x7fd87313cac0>
+
+# ITERABLE SO USE BUILT-IN LIST()
+print(list(zip(list1, list2))) # [(1, 10), (2, 20), (3, 30)]
+print(list(zip("abc", list1, list2))) # can also spread list across tuples -> [('a', 1, 10), ('b', 2, 20), ('c', 3, 30)]
+
+
+#######################################################
+# STACKS -> "last in, first out"
+#######################################################
+# browsing_session = []
+# browsing_session.append(1)
+# browsing_session.append(2)
+# browsing_session.append(3)
+# print(browsing_session) # [1, 2, 3]
+# last = browsing_session.pop()
+# print(last) # 3
+# print(browsing_session) # [1, 2]
+# print("redirect", browsing_session[-1]) # redirect 2
+
+# FALSEY VALUES: 0, "", []
+# if not browsing_session:
+#     print("disable")
+
+# # RECAP
+# browsing_session = []
+# browsing_session.append(1) # add to top of stack
+# browsing_session.pop() # remove the last element
+# # check if it is empty or not
+# if not browsing_session:
+#     browsing_session[-1] # used to get the 'index' on top of the stack
+
+
+#######################################################
+# STACKS -> "last in, first out"
+#######################################################
