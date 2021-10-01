@@ -1,4 +1,5 @@
-import math
+# import math
+from collections import deque
 
 # to see all functions you can type => 'math.'
 
@@ -1108,18 +1109,18 @@ letters = ["a", "b", "c"]
 #######################################################
 # ZIP FUNCTION
 #######################################################
-list1 = [1, 2, 3]
-list2 = [10, 20, 30]
+# list1 = [1, 2, 3]
+# list2 = [10, 20, 30]
 
-# LIST []
-# tuple ()
-[(1, 10), (2, 20), (3, 30)]
+# # LIST []
+# # tuple ()
+# [(1, 10), (2, 20), (3, 30)]
 
-print(zip(list1, list2)) # <zip object at 0x7fd87313cac0>
+# print(zip(list1, list2)) # <zip object at 0x7fd87313cac0>
 
-# ITERABLE SO USE BUILT-IN LIST()
-print(list(zip(list1, list2))) # [(1, 10), (2, 20), (3, 30)]
-print(list(zip("abc", list1, list2))) # can also spread list across tuples -> [('a', 1, 10), ('b', 2, 20), ('c', 3, 30)]
+# # ITERABLE SO USE BUILT-IN LIST()
+# print(list(zip(list1, list2))) # [(1, 10), (2, 20), (3, 30)]
+# print(list(zip("abc", list1, list2))) # can also spread list across tuples -> [('a', 1, 10), ('b', 2, 20), ('c', 3, 30)]
 
 
 #######################################################
@@ -1149,5 +1150,57 @@ print(list(zip("abc", list1, list2))) # can also spread list across tuples -> [(
 
 
 #######################################################
-# STACKS -> "last in, first out"
+# QUEUES -> FIFO, first in, first out: resembles queue in a restaurant. The first person, is the first that would get in
 #######################################################
+# [] can use a list in PYTHON to do this
+# [1, 2, 3, 4]
+# at top need to import the following
+# from collection import deque
+# Instead of queue = [] we do the following:
+# queue = deque([])
+# queue.append(1)
+# queue.append(2)
+# queue.append(3)
+# queue.popleft()
+# print(queue) # deque([2, 3])
+# #If the queue is empty print "empty"
+# if not queue:
+#     print("empty")
+
+
+
+#######################################################
+# TUPLE: read-only list, use (), IMMUTABLE, *** use this when you do NOT want to MODIFY IT. 
+#######################################################
+# point = (1, 2)
+# # Can also Exclude the ()like so:
+# point = 1, 2
+# print(type(point)) # <class 'tuple'>
+
+# # concatinating two > tuples
+# point = (1, 2) + (3, 4)
+# print(point) # (1, 2, 3, 4)
+
+# point1 = tuple([1, 2])
+# print(point1) # (1, 2, 1, 2, 1, 2)
+
+# point3 = (1, 2) * 3
+# print(point3)
+
+# # String Tuples
+# point4 = tuple("Hello World")
+# print(point4) # ('H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd')
+# print(point4[0]) # H
+# print(point4[0:2]) # ('H', 'e')
+
+
+# Can also do the following:
+point5 = (1, 2, 3)
+print(point5[0:2])
+x, y, z = point5
+if 10 in point5:
+    print("exists")
+
+
+# # *** tuples are IMMUTABLE
+# point[0] = 10 # results in ERROR
