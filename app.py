@@ -1,5 +1,6 @@
 # import math
-from collections import deque
+# from collections import deque
+from array import array
 
 # to see all functions you can type => 'math.'
 
@@ -1204,3 +1205,41 @@ if 10 in point5:
 
 # # *** tuples are IMMUTABLE
 # point[0] = 10 # results in ERROR
+
+#######################################################
+# SWAPPING VARIABLES 
+#######################################################
+# x = 10
+# y = 11
+
+# z = x
+# x = y
+# y = z
+
+# print("x", x) # x 11
+# print("y", y) # y 10
+
+# Python  you can do this:
+# x, y = y, x
+# # can set variables like this:
+# a, b = 1, 2
+
+# print("x", x) # x 11
+# print("y", y) # y 10
+
+
+
+#######################################################
+# ARRAYS
+#######################################################
+# [] -> LIST
+# [1, 2, 3] 
+
+# TO USE ARRAYS MUST IMPORT FROM MODULE LIKE SO:
+# from array import array
+# Google Python3 typecode, this shows the 'one character' to use for the type of list being handled
+numbers = array("i", [1, 2, 3])
+numbers.append(4)
+print(numbers) # array('i', [1, 2, 3, 4])
+# Also have .pop(), insert() and remove() similar to LISTS
+# numbers[0] # must be the same type of object
