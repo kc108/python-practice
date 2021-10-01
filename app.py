@@ -741,15 +741,321 @@ import math
 ##################################################
 # FIZZ BUZZ
 ##################################################
-def fizz_buzz(input):
-    if input % 3 == 0:
-        return "Fizz"
-    if input % 5 == 0:
-        return "Buzz"
-    if (input % 3 == 0) and (input % 5 == 0):
-        return "FizzBuzz"
-    return input
+# def fizz_buzz(input):
+#     if (input % 3 == 0) and (input % 5 == 0):
+#         return "FizzBuzz"
+#     if input % 3 == 0:
+#         return "Fizz"
+#     if input % 5 == 0:
+#         return "Buzz"
+#     return input
 
 
-print(fizz_buzz(5))
+# print(fizz_buzz(15))
 
+
+##################################################
+# LISTS => [], can be strings
+##################################################
+letters = ["a", "b", "c"]
+# matrix = [[0, 1], [2, 3]]
+# zeros = [0] * 100
+# print(zeros)
+
+# zeros1 = [0] * 5
+# combined = zeros1 + letters
+# print(combined) # [0, 0, 0, 0, 0, 'a', 'b', 'c']
+
+# numbers = list(range(20))
+# chars = list("Hello")
+# print(numbers) # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+# print(chars) # ['H', 'e', 'l', 'l', 'o']
+# print(len(chars)) # 5
+
+##################################################
+# ACCESSING ITEMS
+##################################################
+# letters = ["a", "b", "c", "d", "e"]
+# letters[0] = "A"
+# print(letters[0])
+# print(letters[0:3]) # ['A', 'b', 'c']
+# print(letters[::2]) # ['A', 'c', 'e']
+# print(letters) # ['A', 'b', 'c', 'd', 'e']
+
+# nums = list(range(20))
+# print(nums[::-1]) # reverses list
+# print(nums[::2]) # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+# ## This is Identical to the below
+# numbers = [1, 2, 3]
+
+# first = numbers[0]
+# second = numbers[1]
+# third = numbers[2]
+
+## SAME AS ABOVE
+# numbers = [1, 2, 3]
+# first, second, third = numbers # list must have the same number of variables
+
+
+# Storing in an Other List: prints everything after the second item
+# numbers1 = [1, 2, 3, 4, 5]
+# first, second, *other = numbers1
+# print(first) # 1
+# print(other) # [3, 4, 5]
+
+
+# numbers2 = [1, 2, 3, 4, 5, 9]
+# first, *other, last = numbers2
+# print(first, last) # 1 9
+# print(other) # [2, 3, 4, 5]
+
+
+##################################################
+# LOOPING OVER LISTS
+##################################################
+# letters = ["a", "b", "c"]
+# for letter in letters:
+#     print(letter)
+
+# a
+# b
+# c
+
+# letters1 = ["a", "b", "c"]
+# for letter in enumerate(letters1):
+#     print(letter[0], letter[1])
+
+# 0 a
+# 1 b
+# 2 c
+
+# can unpack
+# letters = ["a", "b", "c"]
+
+#################################
+# ** don't need this anymore
+#################################
+#################################
+# items = (0, "a")
+# index, letter = items
+#################################
+#################################
+# for index, letter in enumerate(letters1):
+#     print(index, letter)
+
+# Returns a Tuple (returns read only, cannot add new items)
+# (0, 'a')
+# (1, 'b')
+# (2, 'c')
+
+
+#################################################
+# ADDING/REMOVING ITEMS
+#################################################
+# ADD
+# letters = ["a", "b", "c"]
+
+# letters.append("d")
+# letters.insert(0, "-")
+# print(letters) # ['a', 'b', 'c', 'd']
+
+# # REMOVE
+# letters.pop ()
+# print(letters) # ['-', 'a', 'b', 'c']
+# letters.pop(0)
+# print(letters) # ['a', 'b', 'c']
+# letters.remove("b")
+# print(letters) # removes the 1st occurence of "b" -> ["a", "c"]
+# del letters[0]
+# print(letters) # ["c"]
+# # ** can also deleted a range 
+# letters.insert(-1, "b") #["b", "c"]
+# letters.insert(2, "d")
+# print(letters) # ["b", "c", "d"]
+# # Delete a range
+# del letters[0:1]
+# print(letters) # ["c", "d"]
+
+# # CLEAR LIST
+# letters.clear()
+# print(letters) # []
+
+
+#################################################
+# FINDING ITEMS
+#################################################
+# letters1 = ["a", "b", "c"]
+# # print(letters.index("a")) # 0 
+
+# # returns number of times occurs in list
+# print(letters1.count("d")) # 0 
+
+
+# print(letters.index("d")) # returns error since it does not exist to prevent this we should check if something exists
+
+
+# if "d" in letters1: 
+#     print(letters1.index("d"))
+
+#################################################
+# SORTING LISTS
+#################################################
+# numbers = [3, 51, 2, 8, 6]
+
+# numbers.sort()
+# print(numbers) # [2, 3, 6, 8, 51]
+
+# to return in DESCENDING ORDER
+# ** WILL 'NOT' MODIFY THE ORIGINAL LIST
+# numbers.sort(reverse=True) # [2, 3, 6, 8, 51]
+# print(numbers.sort(numbers, reverse=True))
+# print(numbers)
+
+# SORTED FUNCTION ** MODIFIES THE ORIGINAL LIST **
+# sorted(numbers) #[51, 8, 6, 3, 2]
+# print(numbers) # [51, 8, 6, 3, 2]
+
+# items = [
+#     ("Product1", 10), 
+#     ("Product2", 9), 
+#     ("Product3", 12), 
+# ]
+
+# *** NOTHING CHANGES HERE *** MUST DEVELOP A FUNCTION TO SORT LISTS
+# items.sort()
+# print(items)
+
+# # FUNCTION TO SORT LISTS
+# def sort_item(item):
+#     return item[1]
+
+# # this is one way, there is a better way coming up...
+# items.sort(key=sort_item)
+# print(items)
+
+#################################################
+# LAMBDA FUNCTIONS
+#################################################
+# items1 = [
+#     ("Product1", 10), 
+#     ("Product2", 9), 
+#     ("Product3", 12), 
+# ]
+
+
+# def sort_item(items1):
+#     return items1[1]
+
+# IMPROVE THIS FUNCTION BY USING A LAMBDA
+# items1.sort(key=sort_item)
+# print(items1)
+
+# below is comment
+# items1.sort(key=lambda parameters:expression)
+# print(items1)
+
+# next step..
+# items1.sort(key=lambda item:item[1])
+# print(items1)
+
+
+###############################################
+# EXERCISE: WRITE A LAMBDA EXAMPLE
+###############################################
+# Want to transform this list into seeing only lists of prices 
+# items = [
+#     ("Product1", 10),
+#     ("Product2", 9),
+#     ("Product3", 12),
+# ]
+
+# to show prices using for loop -> More elegent solution below
+# prices = []
+# for item in items: 
+#     prices.append(item[1])
+
+
+# map(lambda)
+
+# print(prices) # [10, 9, 12]
+
+
+
+
+################################################
+# LAMBDA -> functions without names
+################################################
+# def square(a):
+#     return a * a
+
+# result = square(5)
+# print(result)
+
+
+# # using a lambda 
+# f = lambda a, b : a + b
+# result = f(5, 6)
+# print(result)
+
+
+# # Normal Function
+# def f(x):
+#     return 3*x + 1
+
+# print(f(2)) # 7
+
+# Lambda, Anonymous function
+# Write your inputs followed by the function
+# LAMBDA is a keyword that displays that the function is an ANONYMOUS FUNCTION
+# g = lambda x: 3*x + 1
+# g(2) # 7
+
+# exercise: create lambda
+# cats = lambda x: 2*x + 3
+# print(cats(2)) # 7
+
+# # LAMBDA WITH MORE THAN ONE INPUT
+# full_name = lambda fn, ln: fn.strip().title() + " " + ln.strip().title() 
+# print(full_name("  kim", "cArPico")) # Kim Carpico
+
+# # USING LAMBDA W/O VARIABLE
+# scifi_authors = ["Isaac Asimov", "Ray Bradbury", "Robert Heinlein", "Arthur C. Clarke", "Frank Herbert", "Orson Scott Card", "Douglas Adams", "H.G. Wells", "Leigh Brackett"]
+
+# # help(scifi_authors.sort)
+# scifi_authors.sort(key=lambda name: name.split(" ")[-1].lower())
+# print(scifi_authors)
+
+# ['Douglas Adams', 'Isaac Asimov', 'Leigh Brackett', 'Ray Bradbury', 'Orson Scott Card', 'Arthur C. Clarke', 'Robert Heinlein', 'Frank Herbert', 'H.G. Wells']
+
+
+################################################
+# (CONTINUE) WITH VIDEO: MAP FUNCTION
+################################################
+# items = [
+#     ("Product1", 10),
+#     ("Product2", 9),
+#     ("Product3", 12),
+# ]
+
+# REPLACE THE FOLLOWING 3 LINES WITH THE MAP FNCT BELOW
+# prices = []
+# for item in items: 
+#     prices.append(item[1])
+
+# x = map(lambda item: item[1], items)
+# print(x) # <map object at 0x7fac03031f70>, WHICH IS ANOTHER ITERABLE
+
+# to get item you do the following:
+# x = map(lambda item: item[1], items)
+# for item in x:
+#     print(item) 
+
+# 10
+# 9
+# 12
+
+# # ** ALTERNATIVELY, YOU CAN CONVERT THIS INTO A LIST OBJECT LIKE SO:
+# prices = list(map(lambda item: item[1], items))
+# print(prices) # [10, 9, 12]
