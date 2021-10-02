@@ -1544,3 +1544,174 @@ if 10 in point5:
 # # Second param is the # of times you want to execute the code
 # print("first code=", timeit(code1, number=10000))
 # print("first code=", timeit(code2, number=10000))
+
+
+#######################################################
+# CLASSES
+#######################################################
+# x = 1
+# print(type(x)) #  <class 'int'>
+
+# CLASS: blueprint for creating new objects
+# Object: instance of a class
+
+# CLASS: Human
+# Objects: John, Mary, Jack
+
+# CREATING CLASSES: Pascal Casing
+# classes get methods thru Inheritance
+# +
+
+# point = MyPoint()
+# print(type(point)) # <class '__main__.MyPoint'>
+
+# # used to find if an object is an instance of a class
+# print(isinstance(point, MyPoint)) # True
+# print(isinstance(point, int)) # False
+
+
+# EXAMPLE OF CLASS
+# class Cat:
+#     def breed(self):
+#         print("Pixie Bob")
+
+# breed = Cat()
+# print(type(breed)) # <class '__main__.Cat'>
+
+# # used to find if an object is an instance of a class
+# print(isinstance(breed, Cat)) # True
+# print(isinstance(breed, int)) # False
+
+#######################################################
+# CONSTRUCTORS
+#######################################################
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+#     def draw(self):
+#         print(f"Point ({self.x}, {self.y})")
+
+# point = Point(1, 2)
+# # print(point.x) # 1
+# point.draw() # (1, 2)
+# # could also do this -> point.draw(1, 2)... BUT it is UNNECESSARY and makes code busy
+
+
+# EXERCISE: MAKE A CLASS
+# class Number:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+
+#     def two_nums(self):
+#         print(f"Numbers ({self.x}, {self.y})")
+
+# number = Number(2, 3)
+# number.two_nums() # (2, 3)
+
+# EXERCISE 2: MAKE ANOTHER CLASS
+# class ThreeDigits:
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+
+#     def three_numbers(self):
+#         print(f"Three Numbers ({self.x}, {self.y}, {self.z})")
+
+# digits = ThreeDigits(3, 4, 5)
+# digits.three_numbers() # (3, 4, 5)
+
+
+#######################################################
+# CLASS VS INSTANCE ATTRIBUTES
+#######################################################
+# Can create an instance after a class is defined such as point.z = 10
+# class Point:
+#     # class level attribute
+#     default_color = "red"
+
+
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+#     def draw(self):
+#         print(f"Point ({self.x}, {self.y})")
+
+# # working with Point class 
+# Point.default_color = "yellow"
+
+# point = Point(1, 2)
+# # point.z = 10
+# print(point.default_color) # red -> this changes to yellow when Point.default_color = "yellow" is set 
+# print(Point.default_color) # red -> yellow
+# point.draw() # (1, 2)
+
+# another = Point(3, 4)
+# another.draw() # (3, 4)
+
+
+#######################################################
+# CLASS VS INSTANCE METHODS
+#######################################################
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+#     # @classmethod: called a Decorator, covered later
+#     @classmethod
+#     # whenever we define a Class parameter, we call the 1st param (cls)
+#     def zero(cls):
+#         cls(0, 0)
+
+#     def draw(self):
+#         print(f"Point ({self.x}, {self.y})")
+
+
+# # point = Point(0, 0)
+# # Factory Method that creates a New Object 
+# point = Point.zero()
+# point.draw()
+
+#######################################################
+# MAGIC METHODS
+#######################################################
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+#     def __str__(self):
+#         return f"({self.x}, {self.y})"
+
+#     def draw(self):
+#         print(f"Point ({self.x}, {self.y})")
+
+# # when this NEW point object is created the magic methods of the class are called AUTOMATICALLY
+# point = Point(1, 2)
+# print(point) # (1, 2)
+
+#######################################################
+# COMPARING OBJECTS
+#######################################################
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    def __gt__(self, other):
+        return self.x > other.x and self.y > other.y
+
+point = Point(10, 20)
+other = Point(1, 2)
+# print(point == other) # False bc Equality compares the references to different areas of memory, therefore we need a MAGIC METHOD
+
+print(point > other) # True
