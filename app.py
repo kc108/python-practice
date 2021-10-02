@@ -2,7 +2,8 @@
 # from collections import deque
 # from array import array
 # from sys import getsizeof
-from pprint import pprint
+# from pprint import pprint
+from timeit import timeit
 
 # to see all functions you can type => 'math.'
 
@@ -1463,10 +1464,83 @@ if 10 in point5:
 #######################################################
 # HANDLING EXCEPTIONS
 #######################################################
+# try:
+#     age = int(input("Age: "))
+# except ValueError as ex:
+#     print("You didn't enter a valid age.") # You didn't enter a valid age.
+#     # print(ex)
+#     # print(type(ex))
+# else:
+#     print("No exceptions were thrown.")
+# print("Execution continues")
+
+
+# HANDLING ZERODIVISION ERRORS
+# try:
+#     age = int(input("Age: "))
+#     xfactor = 10 / age
+# except (ValueError, ZeroDivisionError):
+#     print("You didn't enter a valid age.") # You didn't enter a valid age.
+# # except ZeroDivisionError:
+# #     print("You didn't enter a valid age.")
+# else:
+#     print("No exceptions were thrown.")
+
+# OPENING AND CLOSING FILES 
+# try:
+#     file = open("app.py")
+#     age = int(input("Age: "))
+#     xfactor = 10 / age
+# except (ValueError, ZeroDivisionError):
+#     print("You didn't enter a valid age.") # You didn't enter a valid age.
+# # except ZeroDivisionError:
+# #     print("You didn't enter a valid age.")
+# else:
+#     print("No exceptions were thrown.")
+# finally:
+#     file.close()
+
+
+# the 'WITH STATEMENT' automatically release external resources, closes the file for the USER
+# try:
+#     with open("app.py") as file:
+#         print("File opened.")
+#         file.__
+#     age = int(input("Age: "))
+#     xfactor = 10 / age
+# except (ValueError, ZeroDivisionError):
+#     print("You didn't enter a valid age.") # You didn't enter a valid age.
+# # except ZeroDivisionError:
+# #     print("You didn't enter a valid age.")
+# else:
+#     print("No exceptions were thrown.")
+
+
+# *** GOOGLE: PYTHON3 BUILT-IN EXCEPTIONS TO SEE LIST 
+# *** NOT A GOOD PRACTICE, JUST SHOWING IN CASE YOU SEE IN OTHER PEOPLE'S CODE
+# def calculate_xfactor(age):
+#     if age <= 0:
+#         raise ValueError("Age cannot be 0 or less.")
+#     return 10 / age
+
+# try:
+#     calculate_xfactor(-1)
+# except ValueError as error:
+#     print(error)
+
+# above import 'from timeit import timeit'
+# calculates execution time of code
+code1 = """
+def calculate_xfactor(age):
+    if age <= 0:
+        raise ValueError("Age cannot be 0 or less.")
+    return 10 / age
+
 try:
-    age = int(input("Age: "))
-except ValueError:
-    print("You didn't enter a valid age.") # You didn't enter a valid age.
-else:
-    print("No exceptions were thrown.")
-print("Execution continues")
+    calculate_xfactor(-1)
+except ValueError as error:
+    # pass - statement that does NOT do anything
+    pass
+"""
+# Second param is the # of times you want to execute the code
+print("first code=", timeit(code1, number=10000))
