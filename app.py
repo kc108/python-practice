@@ -1714,4 +1714,129 @@ point = Point(10, 20)
 other = Point(1, 2)
 # print(point == other) # False bc Equality compares the references to different areas of memory, therefore we need a MAGIC METHOD
 
-print(point > other) # True
+# print(point > other) # True
+
+#######################################################
+# PERFORMING ARITHMETIC OPERATIONS
+# #######################################################
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+#     def __add__(self, other):
+#         return Point(self.x + other.x, self.y + other.y)
+
+# point = Point(10, 20)
+# other = Point(1, 2)
+# # print(point + other) # TypeError: unsupported operand type(s) for +: 'Point' and 'Point' --> use MAGIC METHOD
+
+#######################################################
+# MAKING CUSTOM CONTAINERS
+# #######################################################
+# class TagCloud: 
+
+# cloud = TagCloud()
+# len(cloud)
+# cloud["python"] = 10
+# for tag in cloud: 
+#     print(tag)
+
+# class TagCloud1:
+#     def __init__(self):
+#         # to make self.tags private highlight and press F2, then rename __tags prefix
+#         self.__tags = {}
+
+#     def add(self, tag):
+#         # get the value of tag, and if no value default value of 0 and increment by 1
+#         self.__tags[tag.lower()] = self.__tags.get(tag.lower(), 0) + 1
+
+#     def __getitem__(self, tag):
+#         return self.__tags.get(tag.lower(), 0)
+
+#     # def __setitem__(self, key, value)
+#     def __setitem__(self, tag, count):
+#         self.__tags[tag.lower()] = count
+
+#     def __len__(self):
+#         return len(self.__tags)
+
+#     def __iter__(self):
+#         # gives one obj to iterate over
+#         return iter(self.__tags)
+
+# cloud = TagCloud1()
+# # will result in AttributeError
+# # print(cloud.__tags) # see below for how to ACCESS
+# # print(cloud.__tags) 
+# # # need to use the __getitem__ magic method
+# # # cloud["python"] 
+# # # to get the item need to use the __setitem__
+# # cloud["python"] = 10
+# # # need to use __len__ magic method
+# # len(cloud)
+# # cloud.add("Python")
+# # cloud.add("python")
+# # cloud.add("python")
+# # print(cloud.__tags) # {'python': 13}
+# # UNLIKE C# PYTHON LET'S YOU ACCESS PRIVATE. MORE USED FOR CONVENTION FOR PREVENTION OF ACCESS 
+# print(cloud.__dict__) # {'_TagCloud1__tags': {}} -> 
+# print({'_TagCloud1__tags': {}}) # {}
+
+
+#####################################################
+# Properties
+# #######################################################
+# class Product: 
+#     def __init__(self, price):
+#         self.price = price 
+
+# product = Product(-50)
+
+# to ensure price is positive do the following:
+
+# This is not pythonic.. see better prct below
+# class Product: 
+#     def __init__(self, price):
+#         self.set_price(price)
+
+#     def get_price(self):
+#         return self.__price
+
+#     def set_price(self, value):
+#         if value < 0:
+#             raise ValueError("Price cannot be negative")
+#         self.__price = value
+
+
+
+# product = Product(-50) # ValueError: Price cannot be negative
+
+# class Product: 
+#     def __init__(self, price):
+#         self.price = price
+
+#     @property
+#     def price(self):
+#         return self.__price
+
+#     @price.setter
+#     def price(self, value):
+#         if value < 0:
+#             raise ValueError("Price cannot be negative")
+#         self.__price = value
+
+# # # note: not calling the methods - better way to do this below
+# # price = property(get_price, set_price)
+
+
+
+# product = Product(10) # ValueError: Price cannot be negative
+
+# # product.price = -1 
+# product(product.price) # NameError: name 'get_price' is not defined
+
+
+#######################################################
+# MAKING CUSTOM CONTAINERS
+# #######################################################
