@@ -1838,5 +1838,83 @@ other = Point(1, 2)
 
 
 #######################################################
-# MAKING CUSTOM CONTAINERS
+# DECORATOR OVERVIEW
 # #######################################################
+# def outer_function(msg):
+#     def inner_function():
+#         print(msg)
+#     return inner_function
+
+# hi_func = outer_function('Hi')
+# bye_func = outer_function('Bye')
+
+# hi_func()
+# bye_func()
+
+# # DECORATOR: function that takes another function as an argument and spits out another function without augmented the original function
+
+
+#######################################################
+# INHERITANCE
+# #######################################################
+# class Animal(object):
+# the above is the BASE class in all Python 
+# class Animal: 
+
+#     def __init__(self):
+#         self.age = 1
+
+#     def eat(self):
+#         print("eat")
+
+# # All Mammal are Animal, therefore they INHERIT all features of this CLASS
+# # Animal: Parent, Base
+# # Mammal: Child, SubClass
+# class Mammal(Animal):
+#     def walk(self):
+#         print("walk")
+# # #######################################################
+# class Fish(Animal):
+#     def swim(self):
+#         print("swim")
+
+# m = Mammal()
+# m.eat() # eat -> Verifies that it inherits this from the Animal Class
+
+# print(m.age) # 1 -> Initialized at beginning of Class
+
+# ########################################################## 
+# # OBJECT CLASS
+# ##########################################################
+# print(isinstance(m, Mammal)) # True
+# print(isinstance(m, Animal)) # True
+# print(isinstance(m, object)) # True
+
+# print(issubclass(Mammal, Animal)) # True -> is Mammal a SubClass of Animal?
+# print(issubclass(Mammal, object)) # True -> bc indirectly derives from Object
+
+
+# ########################################################## 
+# # METHOD OVERRIDING
+# ##########################################################
+# class Animal:
+#     def __init__(self):
+#         print("Animal Constructor")
+#         self.age = 1
+
+#     def eat(self):
+#         print("eat")
+
+# class Mammal(Animal):
+#     def __init__(self):
+#         # this 'super()' class gives it access to Animal class so that self.weight = 2 can be applied
+#         print("Mammal Constructor")
+#         self.weight = 2
+#         super().__init__()
+
+#     def walk(self):
+#         print("walk")
+
+# m = Mammal()
+# print(m.age)
+# print(m.weight)
