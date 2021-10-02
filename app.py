@@ -1530,17 +1530,17 @@ if 10 in point5:
 
 # above import 'from timeit import timeit'
 # calculates execution time of code
-code1 = """
-def calculate_xfactor(age):
-    if age <= 0:
-        raise ValueError("Age cannot be 0 or less.")
-    return 10 / age
+# this speeds up code:
+# code2 = """
+# def calculate_xfactor(age):
+#     if age <= 0:
+#         return None
+#     return 10 / age
 
-try:
-    calculate_xfactor(-1)
-except ValueError as error:
-    # pass - statement that does NOT do anything
-    pass
-"""
-# Second param is the # of times you want to execute the code
-print("first code=", timeit(code1, number=10000))
+# xfactor = calculate_xfactor(-1)
+# if xfactor == None:
+#     pass
+# """
+# # Second param is the # of times you want to execute the code
+# print("first code=", timeit(code1, number=10000))
+# print("first code=", timeit(code2, number=10000))
