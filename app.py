@@ -1,6 +1,7 @@
 # import math
 # from collections import deque
-from array import array
+# from array import array
+from sys import getsizeof
 
 # to see all functions you can type => 'math.'
 
@@ -1277,56 +1278,145 @@ if 10 in point5:
 #######################################################
 # DICTIONARIES: Used to map key'value pairs 
 #######################################################
-# Example: Phone Book (name -> contact)
-point6 = {"x": 1, "y": 2}
-# can use above or this syntax, *prefer the below
-point6 = dict(x=1, y=2)
-print(point6["x"]) # 1
-# CANNOT USE THIS SYNTAX: point6[0] with DICTIONARIES
+# # Example: Phone Book (name -> contact)
+# point6 = {"x": 1, "y": 2}
+# # can use above or this syntax, *prefer the below
+# point6 = dict(x=1, y=2)
+# print(point6["x"]) # 1
+# # CANNOT USE THIS SYNTAX: point6[0] with DICTIONARIES
 
 
-point6["x"] = 10
-point6["z"] = 20
-# print(point6) # {'x': 10, 'y': 2, 'z': 20}
+# point6["x"] = 10
+# point6["z"] = 20
+# # print(point6) # {'x': 10, 'y': 2, 'z': 20}
 
-# If an Invalid key is used you will get an Error
-# print(point6["a"])
+# # If an Invalid key is used you will get an Error
+# # print(point6["a"])
 
-# *** WORK AROUND TO THIS ERROR ***
-if "a" in point6:
-    print(point6["a"])
-# Can pass a 'default' value as a second argument
-print(point6.get("a", 0)) # None
+# # *** WORK AROUND TO THIS ERROR ***
+# if "a" in point6:
+#     print(point6["a"])
+# # Can pass a 'default' value as a second argument
+# print(point6.get("a", 0)) # None
 
-# OTHER SOLUTION:
-print(point6.get("a")) # returns NONE -> means key does NOT exist
+# # OTHER SOLUTION:
+# print(point6.get("a")) # returns NONE -> means key does NOT exist
 
-del point6["x"]
-print(point6)
+# del point6["x"]
+# print(point6)
 
-# LOOPING OVER DICTIONARIES
-for x in point6:
-    print(x)
+# # LOOPING OVER DICTIONARIES
+# for x in point6:
+#     print(x)
 
-# y
-# z
+# # y
+# # z
 
-# *** BETTER PRACTICE to rename KEY instead of 'x'
-for key in point6:
-    print(key, point6[key]) 
-# y 2
-# z 20
+# # *** BETTER PRACTICE to rename KEY instead of 'x'
+# for key in point6:
+#     print(key, point6[key]) 
+# # y 2
+# # z 20
 
-#
-for x in point6.items():
-    print(key, point6[key]) 
-# EACH ITERATION GET A TUPLE
-# ('y', 2)
-# ('z', 20)
+# #
+# for x in point6.items():
+#     print(key, point6[key]) 
+# # EACH ITERATION GET A TUPLE
+# # ('y', 2)
+# # ('z', 20)
 
-# BETTER PRACTICE -> same result
-for key, value in point6.items():
-    print(key, value)
+# # BETTER PRACTICE -> same result
+# for key, value in point6.items():
+#     print(key, value)
 
-# ('y', 2)
-# ('z', 20)
+# # ('y', 2)
+# # ('z', 20)
+
+#######################################################
+# DICTIONARY COMPREHENSIONS
+#######################################################
+# values = []
+# for x in range(5):
+#     values.append(x * 2)
+
+
+# # LIST COMPREHENSION
+# # *** [expression for item in items]***
+# # SAME AS THE FNCT ABOVE 
+# values = [x * 2 for x in range(5)]
+
+# # list comprehension for a DICTIONARY
+# values1 = {x * 2 for x in range(5)}
+# print(values) # {0, 2, 4, 6}
+
+# # *** SETS: {1, 2, 3, 4} -> JUST HAVE VALUES
+# # *** DICTIONARIES: {1: "a", 2: "b"} -> KEY/VALUE PAIRS 
+# #DICTIONARY
+# values2 = {x: x * 2 for x in range(5)}
+# print(values2) # {0: 0, 1: 2, 2: 4, 3: 6, 4: 8}
+
+
+# # LIST COMPREHENSIONS WITH TUPLES
+# values3 = (x * 2 for x in range(5))
+# print(values3) # <generator object <genexpr> at 0x7fdebb6e3a50>
+
+
+#######################################################
+# GENERATOR EXPRESSIONS
+#######################################################
+# If you are working with LARGE DATA SETS DON'T DO THIS. WILL TAKE TO MUCH MEMORY. INSTEAD USE A 'GENERATOR OBJECTS'
+# values108 = [x * 2 for x in range(10)]
+# for x in values108:
+#     print(x)
+
+# 0
+# 2
+# 4
+# 6
+# 8
+# 10
+# 12
+# 14
+# 16
+# 18
+
+
+# # AT TOP IMPORT: from sys import getsizeof
+# # changed [] for () to create a generator object 
+# values1081 = (x * 2 for x in range(10))
+# for x in values1081:
+#     print(x) # GET THE SAME RESULT AS ABOVE, HOWEVER VALUES IS NO LONGER A LIST IT IS A GENERATOR OBJECT
+
+# print(getsizeof("generator",values1081))
+
+#######################################################
+# UNPACKING OPERATOR
+#######################################################
+# numbers = [1, 2, 3]
+# print(numbers) # [1, 2, 3]
+# # To print individual numbers
+# print(1, 2, 3) # 1 2 3
+
+# ## To do this we use the Unpacking Operator
+# print(*numbers) # 1 2 3
+
+# # # create a list of #'s 1-5
+# # values = list(range(5))
+# # print(values) # [0, 1, 2, 3, 4]
+
+# values = list(range(5))
+# values = [*range(5), *"Hello"]
+# print(values) # [0, 1, 2, 3, 4, 'H', 'e', 'l', 'l', 'o']
+
+# #
+# first = [1, 2]
+# second = [3]
+# values = [*first, "a", * second, *"Hello"]
+# print(values) # [1, 2, 'a', 3, 'H', 'e', 'l', 'l', 'o']
+
+
+# # UNPACKING DICTIONARIES 
+# first = {"x": 1}
+# second = {"x": 10, "y": 2}
+# combined = {**first, **second, "z": 1}
+# print(combined)
