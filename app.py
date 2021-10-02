@@ -1,7 +1,8 @@
 # import math
 # from collections import deque
 # from array import array
-from sys import getsizeof
+# from sys import getsizeof
+from pprint import pprint
 
 # to see all functions you can type => 'math.'
 
@@ -1420,3 +1421,39 @@ if 10 in point5:
 # second = {"x": 10, "y": 2}
 # combined = {**first, **second, "z": 1}
 # print(combined)
+
+#######################################################
+# EXERCISE:
+#######################################################
+sentence = "This is a common interview question"
+
+# WRITE A PROGRAM TO SHOW THE MOST REPEATED CHARACTER IN THE TEXT
+# how many times is each character repeated, what data structure -> dictionary
+
+# *** TO MAKE IT READABLE IMPORT: from pprint import pprint
+# Set it to an Empty Dictionary
+char_frequency = {}
+for char in sentence:
+    #check if char in sentence
+    if char in char_frequency:
+        # increment value by 1
+        char_frequency[char] += 1
+    else:
+        char_frequency[char] = 1
+pprint(char_frequency, width=1)
+
+#Next need to convert Dict to Tuple and then to a List
+
+# RETURNS KEY'VALUE PAIRS AS TUPLES
+# print(sorted(char_frequency.items()))
+
+# then pass 2nd argument
+# print(sorted(char_frequency.items(), key=lambda kv: kv[1]))
+
+# THEN, reverse the sorting
+char_frequency_sorted = (sorted(
+    char_frequency.items(), 
+    key=lambda kv: kv[1], 
+    reverse=True))
+#[0] bc it's in Descending order 
+print(char_frequency_sorted[0])
