@@ -1425,24 +1425,25 @@ if 10 in point5:
 #######################################################
 # EXERCISE:
 #######################################################
-sentence = "This is a common interview question"
+# sentence = "This is a common interview question"
 
 # WRITE A PROGRAM TO SHOW THE MOST REPEATED CHARACTER IN THE TEXT
 # how many times is each character repeated, what data structure -> dictionary
 
 # *** TO MAKE IT READABLE IMPORT: from pprint import pprint
 # Set it to an Empty Dictionary
-char_frequency = {}
-for char in sentence:
-    #check if char in sentence
-    if char in char_frequency:
-        # increment value by 1
-        char_frequency[char] += 1
-    else:
-        char_frequency[char] = 1
-pprint(char_frequency, width=1)
+# char_frequency = {}
+# for char in sentence:
+#     #check if char in sentence
+#     if char in char_frequency:
+#         # increment value by 1
+#         char_frequency[char] += 1
+#     else:
+#         char_frequency[char] = 1
+# pprint(char_frequency, width=1)
 
 #Next need to convert Dict to Tuple and then to a List
+# *** DICTIONARY'S CANNOT BE SORTED, ONLY LISTS CAN BE
 
 # RETURNS KEY'VALUE PAIRS AS TUPLES
 # print(sorted(char_frequency.items()))
@@ -1450,10 +1451,22 @@ pprint(char_frequency, width=1)
 # then pass 2nd argument
 # print(sorted(char_frequency.items(), key=lambda kv: kv[1]))
 
-# THEN, reverse the sorting
-char_frequency_sorted = (sorted(
-    char_frequency.items(), 
-    key=lambda kv: kv[1], 
-    reverse=True))
-#[0] bc it's in Descending order 
-print(char_frequency_sorted[0])
+# # THEN, reverse the sorting
+# char_frequency_sorted = (sorted(
+#     char_frequency.items(), 
+#     key=lambda kv: kv[1], 
+#     reverse=True))
+# #[0] bc it's in Descending order 
+# print(char_frequency_sorted[0])
+
+
+#######################################################
+# HANDLING EXCEPTIONS
+#######################################################
+try:
+    age = int(input("Age: "))
+except ValueError:
+    print("You didn't enter a valid age.") # You didn't enter a valid age.
+else:
+    print("No exceptions were thrown.")
+print("Execution continues")
