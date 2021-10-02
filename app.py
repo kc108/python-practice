@@ -3,7 +3,8 @@
 # from array import array
 # from sys import getsizeof
 # from pprint import pprint
-from timeit import timeit
+# from timeit import timeit
+from abc import ABC, abstractmethod
 
 # to see all functions you can type => 'math.'
 
@@ -1918,3 +1919,105 @@ other = Point(1, 2)
 # m = Mammal()
 # print(m.age)
 # print(m.weight)
+
+# ########################################################## 
+# # MULTILEVEL INHERITANCE: too much inheritance can increase complexity
+# ##########################################################
+# chickens cannot fly: this is an example of poor code prct. Always limit inheritance to 1-2 levels max. 
+# class Animal:
+#     def eat(self):
+#         print("eat")
+
+# class Bird(Animal):
+#     def fly(self):
+#         print("fly")
+
+# class Chicken(Bird):
+#     # pass: empty statement used to make Python Interpretter happy
+#     pass
+
+# ########################################################## 
+# INHERITANCE: GOOD EXAMPLE
+# ##########################################################
+# class Flyer:
+#     def fly(self):
+#         pass
+# class Swimmer:
+#     def swim(self):
+#         pass
+
+# class FlyingFish(Flyer, Swimmer):
+#     pass
+
+# ########################################################## 
+# INHERITANCE: GOOD EXAMPLE #2
+# ##########################################################
+
+# All Custom Exceptions Should End with Error, param is always (Exception)
+# class InvalidOperationError(Exception):
+#     pass
+# class Stream:
+#     def __init__(self):
+#         self.opened = False
+    
+
+#     def open(self):
+#         if self.opened:
+#             raise InvalidOperationError("Stream is already open.")
+#         self.opened = True
+
+#     def close(self):
+#         if not self.opened:
+#             raise InvalidOperationError("Stream is already closed.")
+#         self.opened = False
+
+# class FileStream(Stream):
+#     def read(self):
+#         print("Reading data from a file")
+
+# class NetworkStream(Stream):
+#     def read(self):
+#         print("Reading data from a network")
+
+ # ########################################################## 
+# ABSTRACT BASE CLASSES
+# ##########################################################
+# Some issues with the above example, this code is modified of the code above
+class InvalidOperationError(Exception):
+    pass
+# ABC -> Abstract base class 
+class Stream(ABC):
+    def __init__(self):
+        self.opened = False
+    
+
+    def open(self):
+        if self.opened:
+            raise InvalidOperationError("Stream is already open.")
+        self.opened = True
+
+    def close(self):
+        if not self.opened:
+            raise InvalidOperationError("Stream is already closed.")
+        self.opened = False
+
+    @abstractmethod
+    def read(self):
+        pass
+
+class FileStream(Stream):
+    def read(self):
+        print("Reading data from a file")
+
+class NetworkStream(Stream):
+    def read(self):
+        print("Reading data from a network")
+
+class MemoryStream(Stream):
+    def read(self):
+        print("Reading data from a memory stream.")
+
+# This will NOT work. We need to use an Abstract BaseClass. Want to make the STream Class an Abstract BaseClass
+# do this by importing -> from abc import ABC, abstractmethod
+stream = MemoryStream()
+stream.open()
