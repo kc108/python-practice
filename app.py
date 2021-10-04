@@ -7,6 +7,7 @@
 # # from abc import ABC, abstractmethod
 # # from collections import namedtuple
 # # sales import calc_shipping, calc_tax
+from pathlib import Path
 
 # # ## You can also import an object like so
 # # import ecommerce.sales
@@ -2283,5 +2284,81 @@
 
 
 ############################################################ 
-# 
+# WORKING WITH PATHS
 ############################################################
+# at top: 'from pathlib import Path'
+############################################################
+############################################################
+############################################################
+
+## On Windows: 
+##Path("C:\\Program Files\\Microsoft")
+# # Shortened above using Raw String
+# Path(r"C:\\Program Files\\Microsoft")
+
+# # On Mac:
+# Path("\/usr/local/bin")
+# Path()
+# Path("ecommerce/__init__.py")
+# Path() / "ecommerce" / "__init__.py"
+# Path.home()
+############################################################
+############################################################
+############################################################
+
+# We will do the following 
+path = Path("ecommerce/__init__.py")
+print(path.exists()) # True
+print(path.is_file()) # True
+print(path.is_dir()) # False 
+print(path.name) # __init__.py
+print(path.stem) # __init__
+print(path.suffix) # .py
+print(path.parent) # ecommerce
+path = path.with_name("file.txt")
+print(path) # ecommerce/file.txt
+
+print(path.absolute())  # /Users/kim/general_assembly/jedi/python/python-practice/ecommerce/file.txt
+
+print(path.with_suffix(".txt")) # ecommerce/file.txt
+
+
+############################################################ 
+# WORKING WITH DIRECTORIES
+############################################################
+path = Path("ecommerce")
+
+# Methods to be aware of:
+# path.exists()
+# path.mkdir()
+# path.rmdir()
+# path.rename("ecommerce2")
+
+# RETURNS A GENERATOR OBJECT: 
+# Iterating over generator object: 
+print(path.iterdir()) # <generator object Path.iterdir at 0x7f84c86e39e0>
+
+for p in path.iterdir():
+    print(p) 
+# ecommerce/shopping
+# ecommerce/__init__.py
+# ecommerce/__pycache__
+
+
+# INSTEAD OF DOING THIS
+# can use a List Comprehension
+paths = [p for p in path.iterdir() if p.is_dir()]
+print(paths) # returns: [PosixPath('ecommerce/shopping'), PosixPath('ecommerce/__pycache__')]
+
+py_files = [p for p in path.glob("*.py")]
+print(py_files) # [PosixPath('ecommerce/__init__.py')]
+
+# to search Recursively
+py_files1 = [p for p in path.glob("**/*.py")]
+print(py_files1)
+# OR ALTERNATIVELY...
+py_files2 = [p for p in path.rglob("*.py")]
+print(py_files2)
+
+# ** There is a posix path (standard in Lenix style OS) and a Windows path
+# limitations: cannot search by a pattern and doesn't search for recursively
