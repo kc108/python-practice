@@ -5,6 +5,7 @@
 # from pprint import pprint
 # from timeit import timeit
 from abc import ABC, abstractmethod
+from collections import namedtuple
 
 # to see all functions you can type => 'math.'
 
@@ -1200,11 +1201,11 @@ letters = ["a", "b", "c"]
 
 
 # Can also do the following:
-point5 = (1, 2, 3)
-print(point5[0:2])
-x, y, z = point5
-if 10 in point5:
-    print("exists")
+# point5 = (1, 2, 3)
+# print(point5[0:2])
+# x, y, z = point5
+# if 10 in point5:
+#     print("exists")
 
 
 # # *** tuples are IMMUTABLE
@@ -1983,41 +1984,242 @@ other = Point(1, 2)
 # ABSTRACT BASE CLASSES
 # ##########################################################
 # Some issues with the above example, this code is modified of the code above
-class InvalidOperationError(Exception):
-    pass
-# ABC -> Abstract base class 
-class Stream(ABC):
-    def __init__(self):
-        self.opened = False
+# class InvalidOperationError(Exception):
+#     pass
+# # ABC -> Abstract base class 
+# class Stream(ABC):
+#     def __init__(self):
+#         self.opened = False
     
 
-    def open(self):
-        if self.opened:
-            raise InvalidOperationError("Stream is already open.")
-        self.opened = True
+#     def open(self):
+#         if self.opened:
+#             raise InvalidOperationError("Stream is already open.")
+#         self.opened = True
 
-    def close(self):
-        if not self.opened:
-            raise InvalidOperationError("Stream is already closed.")
-        self.opened = False
+#     def close(self):
+#         if not self.opened:
+#             raise InvalidOperationError("Stream is already closed.")
+#         self.opened = False
 
-    @abstractmethod
-    def read(self):
-        pass
+#     @abstractmethod
+#     def read(self):
+#         pass
 
-class FileStream(Stream):
-    def read(self):
-        print("Reading data from a file")
+# class FileStream(Stream):
+#     def read(self):
+#         print("Reading data from a file")
 
-class NetworkStream(Stream):
-    def read(self):
-        print("Reading data from a network")
+# class NetworkStream(Stream):
+#     def read(self):
+#         print("Reading data from a network")
 
-class MemoryStream(Stream):
-    def read(self):
-        print("Reading data from a memory stream.")
+# class MemoryStream(Stream):
+#     def read(self):
+#         print("Reading data from a memory stream.")
 
-# This will NOT work. We need to use an Abstract BaseClass. Want to make the STream Class an Abstract BaseClass
-# do this by importing -> from abc import ABC, abstractmethod
-stream = MemoryStream()
-stream.open()
+# # This will NOT work. We need to use an Abstract BaseClass. Want to make the STream Class an Abstract BaseClass
+# # do this by importing -> from abc import ABC, abstractmethod
+# stream = MemoryStream()
+# stream.open()
+
+
+############################################################ 
+# DECORATORS > PRACTICE 
+############################################################
+# Example -> you could go into this fnct and do an if, OR YOU CAN USE A DECORATOR FNCT
+# def div(a, b):
+#     return a / b
+
+# print(div(10, 0))
+
+# def check(func):
+#     def inside(a, b):
+#         if b == 0:
+#             print("Can't divide by 0")
+#             return
+#         func(a, b)
+#     return inside
+
+
+# @check
+# def div(a, b):
+#     return a / b
+
+# # div = check(div)
+
+# print(div(10, 0))
+
+
+############################################################ 
+# LIST COMPREHENSION
+############################################################
+# lists [] -> [1, 2, "a", 3.14]
+# List Comprehensions: [expression for value in collection]
+# List Comprehensions w/If Statement: [expression for value in collection if <test1> and <test2>]
+# List Comprehensions -> Looping over more than 1 collection: [expression for value in collection1 and value2 in collection2]
+
+# EXAMPLE: LIST OF SQUARES
+# w/o list comprehensions
+# squares = []
+# for i in range(1, 101)
+#     squares.append(i**2)
+
+# print(squares)
+
+# list comprehensions
+# squares2 = [i**2 for i in range(1, 101)]
+# print(squares2)
+
+# # list comprehension that finds the remainders when you divide by 5
+# remainders5 = [x**2 % 5 for x in range(1, 101)]
+# print(remainders5)
+
+# # OTHER example
+# remainders11 = [x**2 % 11 for x in range(1, 101)]
+# print(remainders11) 
+
+# Find Movies that start with the letter 'G'
+# W/O LIST COMPREHENSIONS
+# movies = ["Groundhog Day", "Matrix", "Good Will Hunting"]
+
+# gmovies = []
+# for title in movies:
+#     if title.startswith("G"):
+#         gmovies.append(title)
+
+# # LIST COMPREHENSION VERSION
+# gmovies1 = [title for title in movies if title.startswith("G")]
+# print(gmovies1)
+
+# # List Comprehension: With a List of Tuples
+# movies1 = [("Citizen Kane", 1941), ("Goodwill Hunting", 2000), ("Groundhog Day", 1993), ("The Aviator", 2001), ("The Lord of the Rings: The Fellowship of the Ring", 2001)]
+
+# # Find Movies Released before 2000
+# pre2k = [title for (title, year) in movies1 if year < 2000]
+# print(pre2k)
+
+# # Scalar Multiplication -> What if we want to multiply each number by 4?
+# v = [2, -3, 1]
+
+# w = [4*x for x in v]
+# print(w) # [8, -12, 4]
+
+# # Use List Comprehension to Calculate the Cartesian Product of Sets
+# # Cartesian Product: named after the French scholar, Rene DeCarte
+# # #A = {1, 3}
+# # #B = {x, y}
+# # #A x B = {(1, x), (1, y), (3, x), (3, y)}
+
+# # HERE IS THE EXAMPLE 
+# A = [1, 3, 5, 7]
+# B = [2, 4, 6, 8]
+
+
+# cartesian_product = [(a, b) for a in A for b in B]
+# print(cartesian_product) # gives list () of all possible pairs
+
+
+############################################################ 
+# POLYMORPHISM
+############################################################
+# class UIControl(ABC):
+#     @abstractmethod
+#     def draw(self):
+#         pass
+
+# class TextBox(UIControl):
+#     def draw(self):
+#         print("TextBox")
+
+# class DropDownList(UIControl):
+#     def draw(self):
+#         print("DrowDownList") # DropDownList
+
+# # 
+# def draw(controls):
+#     for control in controls:
+#         control.draw()
+
+# # Create a Drop-down List Object
+# ddl = DropDownList()
+# # print(isinstance(ddl, UIControl)) # True
+# textbox = TextBox()
+# draw([ddl, textbox]) # TextBox
+
+
+############################################################ 
+# DUCK TYPING
+############################################################
+
+# class TextBox:
+#     def draw(self):
+#         print("TextBox")
+
+# class DropDownList:
+#     def draw(self):
+#         print("DrowDownList") # DropDownList
+
+# # 
+# def draw(controls):
+#     for control in controls:
+#         control.draw()
+
+
+
+############################################################ 
+# EXTENDING BUILT-IN TYPES
+############################################################
+# class Text(str):
+#     def duplicate(self):
+#         return self + self
+
+# text = Text("Python")
+# print(text.lower())
+# print(text.duplicate())
+
+# class TrackableList(list):
+#     def append(self, object):
+#         print("Append called")
+#         super().append(object)
+
+# list = TrackableList()
+# list.append("1")
+
+############################################################ 
+# DATA CLASSES
+############################################################
+# If you are using Classes that have NO METHODS. They ONLY have DATA. Then you can do the following below this function
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+
+#     def __eq__(self, other):
+#         return self.x == other.x and self.y == other.y
+
+    
+# p1 = Point(1, 2)
+# p2 = Point(1, 2)
+# print(p1 == p2) # False bc they are stored in separate places in memory
+
+# # TO SHOW THEY ARE STORED IN DIFFERENT SPOTS IN MEMORY
+# print(id(p1)) # 140695304392224
+# print(id(p2)) # 140695304392080
+
+###################################################################
+# If you are using Classes that have NO METHODS. They ONLY have DATA. Then you can do the following below this function
+###################################################################
+# USE A NAMED TUPLE INSTEAD LIKE THE FOLLOWING:
+###################################################################
+# ***  AT TOP IMPORT: from collections import namedtuple ***
+# 2nd Param are the name of the attributes you would like
+# Point = namedtuple("Point", ["x", "y"])
+
+    
+# p1 = Point(x=1, y=2)
+# # p1.x = 10 # TypeValue Error because you CANNOT convert a Tuple to an object. You must create a new pt object first
+# p1 = Point(x=10, y=2)
+# p2 = Point(x=1, y=2)
+# print(p1 == p2) # True
