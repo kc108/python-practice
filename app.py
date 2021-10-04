@@ -4,8 +4,28 @@
 # from sys import getsizeof
 # from pprint import pprint
 # from timeit import timeit
-from abc import ABC, abstractmethod
-from collections import namedtuple
+# from abc import ABC, abstractmethod
+# from collections import namedtuple
+# from sales import calc_shipping, calc_tax
+
+## You can also import an object like so
+## import ecommerce.sales
+from ecommerce.sales import calc_tax
+# C. When __init__.py is created in the Shopping SubDir you must add '.shopping'
+from ecommerce.shopping import sales
+import sys
+
+# INSTEAD OF WRITING THIS EACH TIME RE-WRITE WITH THE FOLLOWING UNDER COMMENT B.
+calc_tax()
+
+## Then use the object like so:
+## sales.calc_shipping
+
+# C. Better yet, to access all modules do the following:
+sales.__annotations__ # for example -> after typing 'sales.'.. you can see all the methods that are accessible
+
+
+
 
 # to see all functions you can type => 'math.'
 
@@ -2223,3 +2243,26 @@ other = Point(1, 2)
 # p1 = Point(x=10, y=2)
 # p2 = Point(x=1, y=2)
 # print(p1 == p2) # True
+
+
+###################################################################
+# CREATING MODULES
+###################################################################
+# must IMPORT MODULE: from sales import calc_shipping, calc_tax
+
+# calc_shipping()
+# calc_tax()
+
+###################################################################
+# CREATING MODULES
+###################################################################
+
+# Import the following:
+# import sales
+# import sys
+
+# print(sys.path)
+
+###################################################################
+# PACKAGES
+###################################################################
