@@ -2479,3 +2479,24 @@
 # print(movies) # [{'id': 1, 'title': 'Terminator', 'year': 1989}, {'id': 2, 'title': 'Kindergarten Cop', 'year': 1993}] --> an array of dictionaries
 
 # print(movies[0]["title"]) # Terminator
+
+# ############################################################
+# # WORKING WITH SQLITE DATABASE
+# ############################################################
+import sqlite3
+import json
+from pathlib import Path
+
+
+with sqlite3.connect("db.sqlite3") as conn:
+    command = "SELECT * FROM Movies"
+    cursor = conn.execute(command)
+    # comment out otherwise will return an empty [] because the cursor will run out of values
+    # for row in cursor: 
+    #     print(row)
+    movies = cursor.fetchall()
+    print(movies) # [(1, 'Terminator', 1989), (2, 'Kindergarten Cop', 1993)]
+
+# Get Tuple of Values for everything in DB 
+# (1, 'Terminator', 1989)
+# (2, 'Kindergarten Cop', 1993)
