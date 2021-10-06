@@ -2407,48 +2407,75 @@
 ############################################################
 # WORKING WITH ZIP FILES
 ############################################################
-from pathlib import Path
-from zipfile import ZipFile
+# from pathlib import Path
+# from zipfile import ZipFile
 
-# # "w" -> short for write
-# zip = ZipFile("files.zip", "w")
-# # Path("ecommerce").rglob("*.*") # Returns a Generator Object so instead do the following:
-# for path in Path("ecommerce").rglob("*.*"):
-#     zip.write(path)
-# zip.close()
+# # # "w" -> short for write
+# # zip = ZipFile("files.zip", "w")
+# # # Path("ecommerce").rglob("*.*") # Returns a Generator Object so instead do the following:
+# # for path in Path("ecommerce").rglob("*.*"):
+# #     zip.write(path)
+# # zip.close()
 
-# differ EXAMPLE
-with ZipFile("files.zip") as zip:
-    print(zip.namelist()) # ['ecommerce/__init__.py', 'ecommerce/shopping/sales.py', 'ecommerce/shopping/__init__.py', 'ecommerce/__pycache__/__init__.cpython-39.pyc'] --> prints list of Zip Files
+# # differ EXAMPLE
+# with ZipFile("files.zip") as zip:
+#     print(zip.namelist()) # ['ecommerce/__init__.py', 'ecommerce/shopping/sales.py', 'ecommerce/shopping/__init__.py', 'ecommerce/__pycache__/__init__.cpython-39.pyc'] --> prints list of Zip Files
 
-    info = zip.getinfo("ecommerce/__init__.py")
-    print(info.file_size)
-    print(info.compress_size)
-    # OPTIONALLY INSERT PARAM FOR LOCATION OF EXTRACT DIRECTORY
-    zip.extractall("extract") # This creates zipped folder and puts it in VS CODE for you
+#     info = zip.getinfo("ecommerce/__init__.py")
+#     print(info.file_size)
+#     print(info.compress_size)
+#     # OPTIONALLY INSERT PARAM FOR LOCATION OF EXTRACT DIRECTORY
+#     zip.extractall("extract") # This creates zipped folder and puts it in VS CODE for you
 
+
+# ############################################################
+# # WORKING WITH CSV FILES
+# ############################################################
+# import csv
+
+# # with open("data.csv", "w") as file:
+# #     writer = csv.writer(file)
+# #     writer.writerow(["transaction_id", "product_id", "price"])
+# #     writer.writerow([1000, 1, 5])
+# #     writer.writerow([1001, 2, 15])
+
+
+# ############################################################
+# # read mode 
+# ############################################################
+# with open("data.csv") as file:
+#     reader = csv.reader(file)
+#     # reader.writerow(["transaction_id", "product_id", "price"])
+#     # reader.writerow([1000, 1, 5])
+#     # reader.writerow([1001, 2, 15])
+#     # print(list(reader))
+#     for row in reader: 
+#         print(row) # []
 
 ############################################################
-# WORKING WITH CSV FILES
+# WORKING WITH JSON FILES
 ############################################################
-import csv
+# # This creates a movies.json file
+# import json
+# from pathlib import Path
 
-# with open("data.csv", "w") as file:
-#     writer = csv.writer(file)
-#     writer.writerow(["transaction_id", "product_id", "price"])
-#     writer.writerow([1000, 1, 5])
-#     writer.writerow([1001, 2, 15])
+# movies = [
+#     { "id": 1, "title": "Terminator", "year": 1989 }, 
+#     { "id": 2, "title": "Kindergarten Cop", "year": 1993 }, 
+# ]
+
+# data = json.dumps(movies)
+# print(data) # [{"id": 1, "title": "Terminator", "year": 1989}, {"id": 2, "title": "Kindergarten Cop", "year": 1993}]
+# Path("movies.json").write_text(data) # [{"id": 1, "title": "Terminator", "year": 1989}, {"id": 2, "title": "Kindergarten Cop", "year": 1993}]
 
 
-############################################################
-# read mode 
-############################################################
-with open("data.csv") as file:
-    reader = csv.reader(file)
-    # reader.writerow(["transaction_id", "product_id", "price"])
-    # reader.writerow([1000, 1, 5])
-    # reader.writerow([1001, 2, 15])
-    # print(list(reader))
-    for row in reader: 
-        print(row) # []
+# # This creates a movies.json file
+# import json
+# from pathlib import Path
 
+
+# data = Path("movies.json").read_text()
+# movies = json.loads(data) # returns an array of Dictionaries
+# print(movies) # [{'id': 1, 'title': 'Terminator', 'year': 1989}, {'id': 2, 'title': 'Kindergarten Cop', 'year': 1993}] --> an array of dictionaries
+
+# print(movies[0]["title"]) # Terminator
