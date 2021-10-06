@@ -2480,23 +2480,123 @@
 
 # print(movies[0]["title"]) # Terminator
 
+# # ############################################################
+# # # WORKING WITH SQLITE DATABASE
+# # ############################################################
+# import sqlite3
+# import json
+# from pathlib import Path
+
+
+# with sqlite3.connect("db.sqlite3") as conn:
+#     command = "SELECT * FROM Movies"
+#     cursor = conn.execute(command)
+#     # comment out otherwise will return an empty [] because the cursor will run out of values
+#     # for row in cursor: 
+#     #     print(row)
+#     movies = cursor.fetchall()
+#     print(movies) # [(1, 'Terminator', 1989), (2, 'Kindergarten Cop', 1993)]
+
+# # Get Tuple of Values for everything in DB 
+# # (1, 'Terminator', 1989)
+# # (2, 'Kindergarten Cop', 1993)
+
+
+############################################################
+# WORKING WITH SQLITE DATABASE
+############################################################
+# import time
+# print(time.time()) # 1633550229.1951208 -> # of seconds after 1/1/1970
+
+# def send_emails():
+#     for i in range(10000):
+#         pass
+
+# start = time.time()
+# send_emails()
+# end = time.time()
+# duration = end - start
+# print(duration) # returns the amount of time that it took to execute this fnct
+
+
+# ## DayTime Objects
+# # 1st way to do:
+# # # import datetime
+# # # dt = datetime.datetime(2018, 1, 1)
+# # # print(dt)
+
+# # 2nd way to do:
+# from datetime import datetime
+# import time
+
+# dt1 = datetime(2018, 1, 1)
+# print(dt) # 2018-01-01 00:00:00
+
+# dt2 = datetime.now
+
+# # to Parse a DateTime string
+# # Directives for DateTime date formatting DIRECTIVES
+# dt = datetime.strptime("2018/01/01", "%Y/%m/%d")
+# dt = datetime.fromtimestamp(time.time())
+# print(dt) # 2021-10-06 13:06:29.917431
+
+
+# print(f"{dt.year}/{dt.month}") # 2021/10
+# print(dt.strftime("%Y/%m")) # convert a daytime object into a string # 2021/10
+
+# print(dt2 > dt1) # True
+
+
 # ############################################################
-# # WORKING WITH SQLITE DATABASE
+# # WORKING WITH TIME DELTAS
 # ############################################################
-import sqlite3
-import json
-from pathlib import Path
+# from datetime import datetime, timedelta(days=1, seconds=1000)
+
+# dt1 = datetime(2018, 1, 1)
+# dt2 = datetime.now()
+# dt3= datetime(2018, 1, 1)
+# print(dt3)
+
+# duration = dt2 - dt1
+# print(duration) # 1374 days, 13:11:21.265727
+# print("days", duration.days) # days 1374
+# print("seconds", duration.seconds) # seconds 47556
+# print("total_seconds", duration.total_seconds) 
 
 
-with sqlite3.connect("db.sqlite3") as conn:
-    command = "SELECT * FROM Movies"
-    cursor = conn.execute(command)
-    # comment out otherwise will return an empty [] because the cursor will run out of values
-    # for row in cursor: 
-    #     print(row)
-    movies = cursor.fetchall()
-    print(movies) # [(1, 'Terminator', 1989), (2, 'Kindergarten Cop', 1993)]
+# ############################################################
+# # GENERATING RANDOM VALUES
+# ############################################################
+import random
 
-# Get Tuple of Values for everything in DB 
-# (1, 'Terminator', 1989)
-# (2, 'Kindergarten Cop', 1993)
+print(random.random()) # gen differ Floating Pt #
+print(random.randint(1, 10)) # gen differ Floating Pt # bw 1-10
+print(random.choice([1, 2, 3, 4])) # gen differ num from []
+print(random.choices([1, 2, 3, 4], k=2)) # [] -> returns 2 random items from array 
+# EX: password of 4 characters
+print(random.choices("abcdefghijklm", k=4)) # EX: ['g', 'g', 'c', 'm']
+
+# to join() all items using an empty ""
+print("".join(random.choices("abcdefghijklm", k=4)))
+# EX: efki -> issue is limited choice of characters
+
+
+
+# ** USE STRING MODULE **
+import string
+print(string.ascii_letters) # returns string of all lower and uppercase letters
+# abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+print(string.ascii_uppercase)
+print(string.ascii_lowercase)
+
+# instead of above you can do:
+print("".join(random.choices(string.ascii_letters + string.digits, k=4))) # produces random password
+
+# to shuffle an array
+numbers = [1, 2, 3, 4]
+random.shuffle(numbers)
+print(numbers) # order of numbers are randomly changed into an array [4, 1, 3, 2]
+
+print(string.digits) # returns all nums 0-9, 0123456789
+
+
